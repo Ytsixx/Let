@@ -1,4 +1,4 @@
----
+
 
 # 🚀 FFSIXX
 
@@ -10,7 +10,6 @@ Diferente de outras libs, a FFSIXX trabalha **100% com Buffers e Streams**, send
 ![License](https://img.shields.io/npm/l/ffsixx.svg)
 ![Downloads](https://img.shields.io/npm/dm/ffsixx.svg)
 
----
 
 ## ✨ Destaques
 
@@ -22,68 +21,75 @@ Diferente de outras libs, a FFSIXX trabalha **100% com Buffers e Streams**, send
 - 💾 **Stream Friendly** (sem arquivos temporários)
 - 🧩 **TypeScript Ready**
 
----
 
 ## 📦 Instalação
 
 ### Pré-requisitos
 Certifique-se de ter o **FFmpeg** instalado:
 
-- **Termux:** `pkg install ffmpeg`
-- **Ubuntu/Debian:** `sudo apt install ffmpeg`
-- **macOS:** `brew install ffmpeg`
+- **Termux:** ```bash pkg install ffmpeg ```
+- **Ubuntu/Debian:** ```bash sudo apt install ffmpeg```
+- **macOS:** ```bash brew install ffmpeg```
 
 ### Pacote
 ```bash
 npm install ffsixx
 
 pnpm add ffsixx
+```
 
-
----
 
 🛠️ Como Usar
 
+</details><details>
+  <summary><strong>🖼️ Molduras e Filtros</strong></summary>
+  ```js
+  import { frame, applyFilter } from 'ffsixx';
+
+const moldura = await frame(buffer, {
+  color: 'white'
+});
+```
+
 <details>
   <summary><strong>📉 Compressão Inteligente (Target Size)</strong></summary>Ideal para bots que precisam enviar imagens leves sem perder qualidade.
-
+```js
 import { compress } from 'ffsixx';
 
 const { buffer, sizeKB } = await compress(img, {
   maxSizeKB: 300
 });
+```
+
 
 </details><details>
-  <summary><strong>🧩 Stickers (WhatsApp / Telegram)</strong></summary>import { sticker } from 'ffsixx';
-
+  <summary><strong>🧩 Stickers (WhatsApp / Telegram)</strong></summary>
+```js
+  import { sticker } from 'ffsixx';
 const res = await sticker(buffer, {
   quality: 80
 });
+```
+
+
 
 </details><details>
-  <summary><strong>🖋️ Marca d'água (Branding)</strong></summary>import { watermark } from 'ffsixx';
+  <summary><strong>🖋️ Marca d'água (Branding)</strong></summary>
+  
+  ```js
+  import { watermark } from 'ffsixx';
 
 const res = await watermark(buffer, {
   text: 'SIXX CORE',
   position: 'bottom-right'
 });
-
-</details><details>
-  <summary><strong>🖼️ Molduras e Filtros</strong></summary>import { frame, applyFilter } from 'ffsixx';
-
-const moldura = await frame(buffer, {
-  color: 'white'
-});
-
-const pb = await applyFilter(buffer, 'grayscale');
+```
 
 </details>
----
-
-🔧 API Reference
-
 <details>
-  <summary><strong>📚 Ver tabela completa da API</strong></summary>Função	Parâmetros	Descrição
+  <summary><strong>📚 Ver tabela completa da API</strong></summary>
+  
+  Função	Parâmetros	Descrição
 
 compress	maxSizeKB, mode, format	Comprime até atingir o peso alvo
 sticker	quality	Gera WebP 512x512
@@ -96,7 +102,6 @@ flip / flop	buffer	Espelhamento
 
 
 </details>
----
 
 📂 Fontes para Marca d'Água
 
@@ -106,8 +111,6 @@ Para texto customizado, coloque sua fonte em:
 
 Caso não exista, a FFSIXX usa a fonte padrão do sistema.
 
-
----
 
 🤝 Contribuição
 
@@ -126,39 +129,30 @@ git checkout -b feature/NovaFeature
 
 
 
----
-
 📝 Licença
 
 Licença MIT.
 
 
----
-
 👤 Autor
 
 Ytsixx
 
-🐙 GitHub: @Ytsixx
-
-📦 NPM: ffsixx
-
+* 🐙 GitHub: [@Ytsixx](https://github.com/Ytsixx)
+* 📦 NPM: [ffsixx](https://www.npmjs.com/package/ffsixx)
 
 
----
 
 <details>
   <summary><strong>👀 Clique para ver mais</strong></summary>Aqui fica o conteúdo escondido 😈
 Pode ter texto, listas, código, links, tudo.
-
+```js
 console.log("sixx.js </>");
-
+```
 </details>
----
 
 Desenvolvido com ⚡ por FFSIXX Team
 
----
 
 💣 **Resultado:**  
 - README **limpo**
