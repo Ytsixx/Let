@@ -81,8 +81,8 @@ Para marcas d'água de texto, mantenha sua fonte em: ./fontes/SNPro-Bold.ttf. Se
 Este projeto está sob a licença MIT.
 👤 Autor
 Ytsixx
- * GitHub: @Ytsixx
- * NPM: ffsixx
+* 🐙 GitHub: [@Ytsixx](https://github.com/Ytsixx)
+* 📦 NPM: [ffsixx](https://www.npmjs.com/package/ffsixx)
 Desenvolvido com ⚡ por FFSIXX Team
 EOF
 
