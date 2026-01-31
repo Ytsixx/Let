@@ -1,8 +1,10 @@
+---
+
 # 🚀 FFSIXX
 
-**FFSIXX** é uma biblioteca ultra-leve e poderosa para manipulação de imagens no Node.js, construída sobre o motor do **FFmpeg**. 
+**FFSIXX** é uma biblioteca **ultra-leve e poderosa** para manipulação de imagens no **Node.js**, construída sobre o motor do **FFmpeg**.
 
-Diferente de outras bibliotecas, a FFSIXX trabalha inteiramente com **Buffers e Streams**, sendo perfeita para **Bots (WhatsApp/Telegram)**, ferramentas de CLI e ambientes com recursos limitados como o **Termux**.
+Diferente de outras libs, a FFSIXX trabalha **100% com Buffers e Streams**, sendo perfeita para **Bots (WhatsApp/Telegram)**, **CLI tools** e ambientes limitados como **Termux**.
 
 ![NPM Version](https://img.shields.io/npm/v/ffsixx.svg)
 ![License](https://img.shields.io/npm/l/ffsixx.svg)
@@ -12,80 +14,160 @@ Diferente de outras bibliotecas, a FFSIXX trabalha inteiramente com **Buffers e 
 
 ## ✨ Destaques
 
-* **Zero dependências pesadas:** Usa o FFmpeg que você já tem no sistema.
-* **Compressão Inteligente:** Define um alvo (ex: 200KB) e a lib ajusta qualidade/escala automaticamente.
-* **Bot-Ready:** Ferramentas nativas para criação de **Stickers (WebP)**, **Molduras** e **Filtros**.
-* **Branding Ready:** Marca d'água com texto ou logo com controle total de opacidade.
-* **Smart Resize:** Modos `cover` (corte inteligente) e `contain` (com fundo customizável).
-* **Stream Friendly:** Sem arquivos temporários, tudo processado em memória.
-* **TypeScript Ready:** Tipagem completa incluída.
+- ⚡ **Zero dependências pesadas** — usa o FFmpeg do sistema
+- 🎯 **Compressão Inteligente** por tamanho alvo (KB)
+- 🤖 **Bot-Ready** (stickers, filtros, molduras)
+- 🖋️ **Branding Ready** (marca d'água texto ou logo)
+- 🧠 **Smart Resize** (`cover`, `contain`, `fill`)
+- 💾 **Stream Friendly** (sem arquivos temporários)
+- 🧩 **TypeScript Ready**
 
 ---
 
 ## 📦 Instalação
 
 ### Pré-requisitos
-Certifique-se de ter o **FFmpeg** instalado no sistema:
-- **Termux (Android):** `pkg install ffmpeg`
+Certifique-se de ter o **FFmpeg** instalado:
+
+- **Termux:** `pkg install ffmpeg`
 - **Ubuntu/Debian:** `sudo apt install ffmpeg`
 - **macOS:** `brew install ffmpeg`
 
-### Instalação do pacote
-
+### Pacote
 ```bash
 npm install ffsixx
-```
-```bash
+
 pnpm add ffsixx
-```
+
+
+---
 
 🛠️ Como Usar
-1. Compressão Inteligente (Target Size)
-Ideal para bots que precisam enviar imagens leves sem perder qualidade visual.
+
+<details>
+  <summary><strong>📉 Compressão Inteligente (Target Size)</strong></summary>Ideal para bots que precisam enviar imagens leves sem perder qualidade.
 
 import { compress } from 'ffsixx';
-const { buffer, sizeKB } = await compress(img, { maxSizeKB: 300 });
 
-2. Stickers (WhatsApp/Telegram)
-import { sticker } from 'ffsixx';
-const res = await sticker(buffer, { quality: 80 });
+const { buffer, sizeKB } = await compress(img, {
+  maxSizeKB: 300
+});
 
-3. Marca d'água (Branding)
-import { watermark } from 'ffsixx';
-const res = await watermark(buffer, { text: 'SIXX CORE', position: 'bottom-right' });
+</details><details>
+  <summary><strong>🧩 Stickers (WhatsApp / Telegram)</strong></summary>import { sticker } from 'ffsixx';
 
-4. Molduras e Filtros
-import { frame, applyFilter } from 'ffsixx';
-const moldura = await frame(buffer, { color: 'white' });
+const res = await sticker(buffer, {
+  quality: 80
+});
+
+</details><details>
+  <summary><strong>🖋️ Marca d'água (Branding)</strong></summary>import { watermark } from 'ffsixx';
+
+const res = await watermark(buffer, {
+  text: 'SIXX CORE',
+  position: 'bottom-right'
+});
+
+</details><details>
+  <summary><strong>🖼️ Molduras e Filtros</strong></summary>import { frame, applyFilter } from 'ffsixx';
+
+const moldura = await frame(buffer, {
+  color: 'white'
+});
+
 const pb = await applyFilter(buffer, 'grayscale');
 
+</details>
+---
+
 🔧 API Reference
-| Função | Parâmetros Principais | Descrição |
-|---|---|---|
-| compress | maxSizeKB, mode, format | Comprime até atingir o peso alvo em KB. |
-| sticker | quality | Gera WebP (512x512) para figurinhas. |
-| frame | color, thickness | Adiciona bordas coloridas à imagem. |
-| applyFilter | name | Filtros: grayscale, sepia, invert, dark. |
-| watermark | text, logo, position | Aplica texto ou imagem sobre a foto. |
-| resize | width, height, fit | Redimensiona (cover, contain, fill). |
-| crop | x, y, width, height | Recorta uma área específica. |
-| flip / flop | buffer | Espelhamento horizontal e vertical. |
-📂 Estrutura de Fontes
-Para marcas d'água de texto, mantenha sua fonte em: ./fontes/SNPro-Bold.ttf. Se não encontrada, a lib usará a fonte padrão do sistema.
+
+<details>
+  <summary><strong>📚 Ver tabela completa da API</strong></summary>Função	Parâmetros	Descrição
+
+compress	maxSizeKB, mode, format	Comprime até atingir o peso alvo
+sticker	quality	Gera WebP 512x512
+frame	color, thickness	Adiciona bordas
+applyFilter	name	grayscale, sepia, invert
+watermark	text, logo, position	Marca d'água
+resize	width, height, fit	cover, contain, fill
+crop	x, y, width, height	Recorte
+flip / flop	buffer	Espelhamento
+
+
+</details>
+---
+
+📂 Fontes para Marca d'Água
+
+Para texto customizado, coloque sua fonte em:
+
+./fontes/SNPro-Bold.ttf
+
+Caso não exista, a FFSIXX usa a fonte padrão do sistema.
+
+
+---
+
 🤝 Contribuição
- * Faça um Fork do projeto.
- * Crie uma Branch (git checkout -b feature/NovaFeature).
- * Commit suas mudanças (git commit -m 'feat: nova ferramenta').
- * Abra um Pull Request.
+
+1. Fork o projeto
+
+
+2. Crie uma branch:
+git checkout -b feature/NovaFeature
+
+
+3. Commit: git commit -m "feat: nova ferramenta"
+
+
+4. Abra um Pull Request
+
+
+
+
+---
+
 📝 Licença
-Este projeto está sob a licença MIT.
+
+Licença MIT.
+
+
+---
+
 👤 Autor
+
 Ytsixx
-* 🐙 GitHub: [@Ytsixx](https://github.com/Ytsixx)
-* 📦 NPM: [ffsixx](https://www.npmjs.com/package/ffsixx)
+
+🐙 GitHub: @Ytsixx
+
+📦 NPM: ffsixx
+
+
+
+---
+
+<details>
+  <summary><strong>👀 Clique para ver mais</strong></summary>Aqui fica o conteúdo escondido 😈
+Pode ter texto, listas, código, links, tudo.
+
+console.log("sixx.js </>");
+
+</details>
+---
+
 Desenvolvido com ⚡ por FFSIXX Team
-EOF
 
+---
 
+💣 **Resultado:**  
+- README **limpo**
+- Conteúdo avançado **oculto**
+- Profissional pra **npm + GitHub**
+- Cara de projeto grande 😎
 
-Agora sim! Desafio pago. O arquivo ficou gigante e com tudo o que a **FFSIXX** oferece.
+Se quiser, próximo nível:
+- 🛡️ Badges extras (coverage, size, types)
+- 📊 GIF de demonstração
+- 🧠 Docs separada (`/docs`)
+- 🧪 Seção de benchmarks
